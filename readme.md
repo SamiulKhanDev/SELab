@@ -1,4 +1,56 @@
-The Architecture of this system has three major fields.
+
+
+
+
+                                                                              Software RequirementsSpecification
+                                                                                                   for
+                                                                                  Library Management System
+
+
+
+
+1.1 Purpose
+The purpose of this document is to familiarize reader with software. Specification describes allhardware and software requirements for product, behavior of it and its components. SoftwareRequirements Specification (SRS) allows to verify the customer that all his requirements areobserved and implemented correctly by de- veloper.The intended audience for the SRS reading consists of system end-users (patrons), customerengineers, software developers.
+
+1.2 Scope
+The  software  will  reflect  all  the  requirements  defined  by  the  customer.  College  LibraryManagement System will allow to perform all necessary procedures for librarians and patrons.According  to  customer  requirements   the  software  to  be  developed  will  consist  of  threedatabases:•Item’s database (books, journals, magazines, newspapers, diploma thesis, etc)•Patron’s database•a small Access-based database with information about digital items, that College has (software, music) integrated with Item’s  databaseLMS will also provide all necessary services for databases such as creating, deleting, updatingand  searching   information.   Patrons   will  be  able   to   access   to   the   library   site   (web-based)through   the   Internet,   scattered   throughout  the  library  for  sending  request,  receivinginformation  about  current  status  of  the  books  or  renewing   them.   User   interfaces   will  beergonomical and easy-to-use
+
+
+1.3 Deftnition, Acronyms, Abbreviation
+•JAVASCRIPT -> Synchoronous Single threaded language 
+•NOSQL -> Not Only Structured query Language
+•MONGODB -> Document Oriented NOSQL database
+•NODEJS -> Javascript runtime enviroment based on Google Chrome's V8 Engine
+•NOSQL -> Not Only Structured query Language
+•MONGOOSE -> ODM for Mongodb
+
+1.5 Overview
+The implementation of Library Management starts with entering and updating master recordslike book details, library information. Any further transaction like book issue, book return willautomatically update the current books
+
+Overall Description
+
+2.1 Product Perspective
+LMS is a replacement for the ordinary library management systems which depend on paper work for recording book and users’  information.LMS will provide an advanced book search mechanism and will make it easy to borrow, insert and index a book in the library.
+
+2.2.1Administrator
+•Admin should be able to insert, modify and delete books.
+•Increase the period for borrowing a book for specific type or group of users.
+•Can get the information (status report) of any member who has borrowed a book.
+•Add and edit book categories and arrange books by categories.
+•Add and edit authors and publishers information.
+•Can send lateness warnings to people who have exceeded deadline date.
+•Can record books returned by users.
+
+2.2.2Users(Library Members)
+•The member should be provided with the updated information about the books catalog.
+•Members are given a provision to check their account’s information and change it.
+•Members have the ability to search through books by subject, title, authors or any information related to the book.
+•Can extend the period of borrowing books according to the library policy.
+•The customer may suggest a book to be brought to the library book collection.
+
+
+2.2.3 Architecture of this system
+UsersThe Architecture of this system has three major fields.
 1)SuperUser - This user can create new admin for the system.
 2)Admin - created by SuperUser has ability to Add or delete any book in the database.
 3)User - students who wants to get or return books.
@@ -144,7 +196,7 @@ But in the frontend we also need to use some provate routing technique along wit
 to store the infromation of the user or admin. Technologies such as redux toolkit can be a great help here.
 But if the choise of frontend is react the react-context combining with useReducer hook can simulate the redux toolkit.
 
-Along side we also need to understnd the CROSS ORIGIN RESOUCE SHARING policy , as both the front end and backend will run of diffrenret PORTS. At backend w can use then cors middile where with origin set to "*"
+Along side we also need to understnd the CROSS ORIGIN RESOUCE SHARING policy , as both the front end and backend will run of diffrenret PORTS. At backend w can use then cors middileware with origin set to "*"
 
 The entire testing has been done using postman.
 
@@ -163,5 +215,64 @@ MONGODB(A DOCUMENT ORIENTED DATABASE THAT EXCEPTS JSON DATA STORES THEM AS BINAR
 NODEMON(A DEV DEPENDENCY TO AUTOMATICALLY START THE SERVER UPON UPDATING THE CODE)
 DOTENV(TO STORE THE PRIVATE KEYS THE PRIVATE ENVIROMENT SO UPON UPLODING THE CODES , SECURITY DOESN'T GETS COMPROMISED)
 
+2.4 User Classes and Characteristics
+We have 2 levels of users
+•User module:  In the user module, user will check the availability of the books.–Book return
+•Administration module: The following are the sub module in the administration  module.–Register user–Entry book details–Book issue
+
+2.5 General Constraints
+•The information of all users, books and libraries must be stored in a database that is accessible by the website.
+•The Online Library System is running 24 hours a day.
+•Users may access LMS from any computer that has Internet browsing capabilities and an Internet connection.
+•Users must have their correct usernames and passwords to enter into their online accounts and do actions
 
 
+2.6 Assumptions and DependenciesT
+he success of this system depends on
+•Existence of an Internet service to all people in Gaza Strip.
+•Are librarians and users comfortable with computers and have enough ability to work with the product?
+•Website interface must be friendly and  easy-to-use.
+•The search mechanism should be simple and fast.
+
+Functional Requirements
+3.1 Scope of the work
+There are several motivations to order new computer-based College LMS:
+•To modernize College Library database, where data was stored in a card-based catalog
+•To optimize librarians’ work and  time
+•To join small Access-based database, where library has stored information about digital items (software, music)
+•To expand services of library and patron’s possibilities
+•To check ability of commercial using of library management  systems.The  LMS  will  allow  remote  access  to  library  database  via  Internet  only  for  patrons  afterauthorization  proce-   dures.  The  patrons  could  search,  renew  items,  send  requests.  TheCollege LMS will provide remote access to other databases.
+
+3.2 Scope of the product
+Features provided by the library management system:
+•Store necessary information about items in the library:–Author;–Item’s title;–Call number;–Year of publication–Location in the  library;–Number of copies–Current status
+•System will provide librarian to add, modify, and remove items to/from the library database, and check availability of the item.
+•System will allow patron to get information about his/her status after authorization procedures:
+–User name–User address–Student number–Number and information about checked out  items–Requested items  information
+•Possibility to search and request items in the inter library loans, online databases through Internet.
+
+3.3 Functional requirements
+Functional requirements are the following:
+•The LMS should store all information about librarians and patrons, their access keys, priority and etc.
+•The LMS allow searching items by author, title or keywords
+•The LMS should support 500 patrons and 1000 requests/min simultaneously.
+•The LMS should allow librarians to add, delete and modify items in database, and check availability of the items.
+•The LMS should generate request’s reports for librarians every day, on base of which librarians could make decisions about acquiring or retirement the item
+•The LMS should create notification and send to patrons by e-mail automatically after item’s overdue
+•The LMS should provide to search, request and renew items either from the library computers (LMS application) or from outside the library through College site(web-based) though the  Internet.
+•The LMS should provide access to previous Access-based database, online databases
+
+Nonfunctional Requirements
+
+4.1 Performance Requirements
+•The system shall accommodate high number of books and users without any fault.
+•Responses to view information shall take no longer than 5 seconds to appear on the screen.
+
+4.2 Safety Requirements
+•System use shall not cause any harm to human users.
+
+4.3 Security Requirements
+•System will use secured database
+•Normal users can just read information but they cannot edit or modify anything except their personal and some other  information.
+•System will have different types of users and every user has access constraints.4.4 Error Handling
+•LMS product shall handle expected and non-expected errors in ways that prevent loss in information and long downtime  period
